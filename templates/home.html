@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block title %}Adoptly pets{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+    {% for pet in pets %}
+      <div class="col-sm">
+
+        <div class="card mt-2" style="width: 15rem;">
+            <img src="{{pet.photo_url}}" class="card-img-top">
+            <div class="card-body">
+              <h5 class="card-title">{{pet.name}} 
+                  {% if pet.available %}
+                  <span><small> is available.</small></span>
+                  {% endif %}
+              </h5>
+            {% if pet.age %}
+              <p class="card-text"><b>Age:</b> {{pet.age}}</p>
+            {% endif %}
+
+            {% if pet.sex %}
+              <p class="card-text"><b>Sex:</b> {{pet.sex}}</p>
+            {% endif %}
+            
+
+              <a href="/pets/{{pet.id}}" class="btn text-light" style="background-color: #53C1B3;">Details</a>
+            </div>
+          </div>
+
+      </div>
+
+    {% endfor %}
+     
+    </div>
+  </div>
+
+
+{% endblock %}
